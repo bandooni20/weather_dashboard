@@ -169,4 +169,69 @@ function updateCurrentWeather(data) {
     currentWeather.appendChild(weatherDescription);
   }
   
+  // Function to add recent city to the dropdown and localStorage
+function updateRecentCities(city) {
+  // Get existing cities from localStorage or initialize an empty array
+  let recentCities = JSON.parse(localStorage.getItem('recentCities')) || [];
+  
+  // Check if the city is already in the list
+  if (!recentCities.includes(city)) {
+    // Add the new city to the beginning of the array (optional)
+    recentCities.unshift(city);
+    
+    // Limit the number of cities stored to 5
+    if (recentCities.length > 5) {
+      recentCities.pop(); // Remove the oldest city
+    }
+    
+    // Save the updated list back to localStorage
+    localStorage.setItem('recentCities', JSON.stringify(recentCities));
+  }
+
+  // Update the dropdown with the recent cities
+  populateDropdown(recentCities);
+}
+
+// Function to populate the dropdown with recent cities
+function populateDropdown(cities) {
+  const dropdown = document.getElementById('recentCities');
+  dropdown.innerHTML = '<option value="" disabled selected>Recently Searched Cities</option>'; // Clear previous options
+
+  cities.forEach(city => {
+    const option = document.createElement('option');
+    option.value = city;
+    option.textContent = city;
+    dropdown.appendChild(option);
+  });
+
+  // Make the dropdown visible if there are recent cities
+  if (cities.length > 0) {
+    dropdown.classList.remove('hidden');
+  } else {
+    dropdown.classList.add('hidden');
+  }
+}
+
+// Event listener to handle city selection from the dropdown
+document.getElementById('recentCities').addEventListener('change', (event) => {
+  const city = event.target.value;
+  if (city) {
+    fetchWeatherData(city); // Fetch weather for the selected city
+  }
+});
+
+// Event listener for search button
+searchButton.addEventListener('click', () => {
+  const city = cityInput.value.trim(); // Get input from text field
+  if (city) {
+    fetchWeatherData(city); // Fetch weather data
+    updateRecentCities(city); // Update recent cities list
+  }
+});
+
+// Populate dropdown with recent cities from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const recentCities = JSON.parse(localStorage.getItem('recentCities')) || [];
+  populateDropdown(recentCities);
+});
 
