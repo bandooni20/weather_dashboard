@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# weather_dashboard
-A weather forecast app built with JavaScript, HTML, and Tailwind CSS.
-=======
-# Weather Forecast Application
+# Weather Forecast Applicationcd
 This application provides real-time weather updates and a 5-day forecast.
 - Fetch weather data by city name.
 - Use your current location for weather details.
@@ -38,5 +34,4 @@ This weather forecast application provides real-time weather updates and a 5-day
 ## Setup Instructions
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/weather-dashboard.git
->>>>>>> 3846125 (add files)
+   git clone https://github.com/bandooni20/weather_dashboard.git
