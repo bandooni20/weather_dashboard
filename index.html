@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dynamic text-white min-h-screen flex flex-col">
+  <!-- Header Section -->
+  <header class="relative text-center py-12 animate-headerFade">
+    <h1 class="text-5xl font-extrabold tracking-wide animate-textZoom">Weather Dashboard</h1>
+    <p class="mt-2 text-lg opacity-80 animate-subTextSlide">Real-time weather with style</p>
+  </header>
+
+  <!-- Main Content Section -->
+  <main class="container mx-auto flex flex-col md:flex-row items-start gap-6 p-6">
+    <!-- Search and Current Weather Section -->
+    <section class="flex-1 bg-gray-800 rounded-lg shadow-xl p-6 animate-sectionEnter">
+      <div class="flex flex-col sm:flex-row items-center gap-4 mb-6">
+        <input id="cityInput" type="text" placeholder="Enter city" class="flex-grow px-4 py-2 rounded-md text-gray-900 focus:ring-2 focus:ring-blue-500 transition"/>
+        <button id="searchButton" class="btn-rainbow animate-btnHover">Search</button>
+        <button id="currentLocationButton" class="btn-glow animate-btnPulse">Use My Location</button>
+      </div>
+      <div id="currentWeather" class="text-center p-4 border-t border-gray-700">
+        <h2 id="cityName" class="text-2xl font-semibold"></h2>
+        <p id="date" class="text-sm text-gray-400"></p>
+        <i id="weatherIcon" class="fas text-6xl my-4 animate-iconBounce"></i>
+        <p id="temp" class="text-xl font-bold"></p>
+        <p id="wind" class="text-sm mt-2"></p>
+        <p id="humidity" class="text-sm"></p>
+      </div>
+    </section>
+
+    <!-- Forecast Section -->
+    <section id="forecast" class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-forecastSlide">
+      <!-- Forecast cards will be dynamically added here -->
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="text-center py-6 mt-auto text-gray-400 animate-footerSlide">
+    <p>Built with ❤️ by KM Neetu</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
